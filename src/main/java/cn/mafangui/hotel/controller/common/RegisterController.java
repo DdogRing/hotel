@@ -27,8 +27,9 @@ public class RegisterController {
         int result = userService.insertUser(user);
         if(result==1){
             return ResponseTool.success(result);
+        } else {
+            return ResponseTool.failed("注册失败,请稍后再试");
         }
-        else return ResponseTool.failed("注册失败,请稍后再试");
     }
 
     @RequestMapping(method = RequestMethod.POST,value = "/admin")

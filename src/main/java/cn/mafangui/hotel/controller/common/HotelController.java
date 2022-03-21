@@ -4,6 +4,7 @@ import cn.mafangui.hotel.entity.Hotel;
 import cn.mafangui.hotel.response.AjaxResult;
 import cn.mafangui.hotel.response.ResponseTool;
 import cn.mafangui.hotel.service.HotelService;
+import cn.mafangui.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

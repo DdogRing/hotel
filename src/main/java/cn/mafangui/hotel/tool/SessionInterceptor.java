@@ -17,7 +17,7 @@ public class SessionInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        if(session.getAttribute("userId") != null){
+        if(session.getId() != null){
             return true;
         }else {
             setCorsMappings(request, response);

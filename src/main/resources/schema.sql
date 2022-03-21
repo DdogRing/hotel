@@ -17,7 +17,7 @@ IF NOT EXISTS `room_type` (
 	`bed_num` int not null DEFAULT 1 COMMENT '床位',
 	`bed_size` varchar(16) not null DEFAULT '1.5m*1.8m' COMMENT '床位大小',
 	`window` int not null DEFAULT 0 COMMENT '是否有窗：0-无，1-有',
-	`create_time` TIMESTAMP not null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`create_time` TIMESTAMP  COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`type_id`),
 	UNIQUE KEY `uqe_room_type` (`room_type`)
@@ -35,7 +35,7 @@ IF NOT EXISTS `room_info` (
 	`room_discount` DOUBLE NOT NULL DEFAULT 0 COMMENT '房间折扣',
 	`room_status` int NOT NULL DEFAULT 1 COMMENT '房间状态:1-可预订，0-已被预订，-1：已入住，-2：不可用',
 	`remark` VARCHAR(255) null COMMENT '备注',
-	`create_time` TIMESTAMP not null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`create_time` TIMESTAMP '0000-00-00 00:00:00' COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`room_id`),
 	UNIQUE KEY `uqe_room_number` (`room_number`)
@@ -51,8 +51,8 @@ IF NOT EXISTS `check_in` (
 	`peo_count` INT NOT NULL DEFAULT 1 COMMENT '入住人数',
 	`persons` VARCHAR (255) NOT NULL COMMENT '入住人',
 	`ids` VARCHAR (255) NOT NULL COMMENT '身份证号',
-	`check_in_time` TIMESTAMP null DEFAULT '0000-00-00 00:00:00' COMMENT '入住时间',
-	`create_time` TIMESTAMP not null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`check_in_time` TIMESTAMP null  COMMENT '入住时间',
+	`create_time` TIMESTAMP not null  COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`check_in_id`),
 	UNIQUE KEY `uqe_order_id`(`order_id`)
@@ -70,7 +70,7 @@ IF NOT EXISTS `order_info` (
 	`order_days` INT NOT NULL DEFAULT 1 COMMENT '预定天数',
 	`order_status` int not null DEFAULT 0 COMMENT '订单状态:0-已下单，1-已付款，2-已消费，-1-已取消，-2-被删除',
 	`order_cost` DOUBLE NOT NULL COMMENT '订单费用',
-	`create_time` TIMESTAMP null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`create_time` TIMESTAMP null  COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`order_id`)
 ) COMMENT '订单信息表';
@@ -79,7 +79,7 @@ IF NOT EXISTS `order_info` (
 -- 5注册用户信息表
 CREATE TABLE
 IF NOT EXISTS `user_info` (
-	`user_id` INT NULL AUTO_INCREMENT COMMENT '用户id',
+	`user_id` INT AUTO_INCREMENT COMMENT '用户id',
 	`username` VARCHAR (16) NOT NULL COMMENT '用户名',
 	`password` VARCHAR (256) NOT NULL COMMENT '密码',
 	`name` VARCHAR(16) not NULL COMMENT '姓名',
@@ -97,7 +97,7 @@ IF NOT EXISTS `user_info` (
 -- 6工作人员信息表
 CREATE TABLE
 IF NOT EXISTS `worker_info` (
-	`worker_id` INT NULL AUTO_INCREMENT COMMENT '操作员id',
+	`worker_id` INT AUTO_INCREMENT COMMENT '操作员id',
 	`role` VARCHAR(8) NOT NULL DEFAULT 'worker' COMMENT '角色:worker/admin',
 	`username` VARCHAR (16) NOT NULL COMMENT '用户名',
 	`password` VARCHAR (16) NOT NULL COMMENT '密码',
@@ -107,7 +107,7 @@ IF NOT EXISTS `worker_info` (
 	`department` int null COMMENT '部门',
 	`email` VARCHAR (16) NULL COMMENT '邮箱地址',
 	`address` VARCHAR (32) NULL COMMENT '地址',
-	`create_time` TIMESTAMP not null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`create_time` TIMESTAMP not null  COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`worker_id`),
 	UNIQUE KEY `uqe_username` (`username`)
@@ -136,7 +136,7 @@ IF NOT EXISTS `department_info` (
 	`department_id` int not null auto_increment COMMENT '部门id',
 	`departmen` VARCHAR(16) not null DEFAULT '可用' COMMENT '部门',
 	`remark` VARCHAR(32) null COMMENT '备注',
-	`create_time` TIMESTAMP not null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`create_time` TIMESTAMP not null  COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`department_id`),
 	UNIQUE KEY `uqe_status` (`departmen`)
@@ -149,7 +149,7 @@ IF NOT EXISTS `order_type` (
 	`type_id` int not null auto_increment COMMENT 'typeId',
 	`type` VARCHAR(16) not null COMMENT '方式',
 	`remark` VARCHAR(32) null COMMENT '备注',
-	`create_time` TIMESTAMP not null DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
+	`create_time` TIMESTAMP not null  COMMENT '创建时间',
 	`update_time` TIMESTAMP null ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY(`type_id`)
 ) COMMENT '预订方式表';
